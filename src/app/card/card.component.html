@@ -1,0 +1,115 @@
+<!-- <style type="text/css">
+img {
+-webkit-filter: grayscale(1);/* Webkit */
+filter:gray;/* IE6-9 */
+filter: grayscale(1);/* W3C */
+}
+</style> -->
+<style type="text/css">
+  .red {
+    color: red;
+  }
+  .chartHistoryContent{
+    font-size: 12px;
+    width: 300px;
+    overflow-y: scroll;
+    /*font-weight: bold;*/
+    color: #000000;
+    font-family:"微软雅黑";
+    height: 92%;
+  }
+  .chartHistoryClear{
+    padding:0;
+    margin:0;
+    list-style:none
+  }
+  .chartHistoryLeft{
+    display: block;
+    min-height: 30px;
+    margin: 5px;
+  }
+
+  .chartHistoryRight{
+    display: block;
+    min-height: 30px;
+    margin: 5px;
+
+  }
+  .chartHistoryLeft table{
+    /* border: 1px black solid;*/
+    /* min-width: 200px;
+     max-width: 100%;*/
+  }
+  .chartHistoryLeft table tr td{ /*border: 1px black solid;*/}
+  .chartHistoryAvartar{
+    width: 24px;
+    height: 24px;
+    background-color: #90D0F2;
+    text-align: center;
+    border-radius: 50%;      -moz-border-radius: 50%;      -webkit-border-radius: 50%;
+
+  }
+  .chartHistoryDetailLeft{
+    /*  max-width: 100%;
+      width: auto;*/
+    word-wrap: break-word;word-break: break-all;overflow: hidden;
+    background-color: #F5F5F5;
+    border-radius: 0 10px 10px 10px;
+    padding: 5px;
+  }
+  .chartHistoryDetailRight{
+    /*  max-width: 100%;
+      width: auto;*/
+    word-wrap: break-word;word-break: break-all;overflow: hidden;
+    background-color: #E3F2FA;
+    border-radius: 10px 0 10px 10px;
+    padding: 5px;
+  }
+  .refreshLeft{
+    height: 18.8px;
+    line-height: 18.8px;
+    color:#5CB85B;
+    font-size: 12px;
+    font-family:"微软雅黑";
+  }
+  .refreshRightButton{
+    background-color: #5CB85B;
+    color: #ffffff;
+    font-size: 12px;
+    font-family:"微软雅黑";
+    border: 0;
+  }
+
+</style>
+
+<div class="chartHistoryContent">
+  <ul class="chartHistoryClear">
+    <li class="chartHistoryLeft" *ngFor="let parm of todayHistoryList">
+      <table *ngIf="parm.msg_from==='1'">
+        <tr>
+          <td rowspan="2" valign="top" style=" font-size: 16px;padding: 5px;"><div class="chartHistoryAvartar"><i class="fa fa-comments " ></i></div></td>
+          <td style="color: #1D9BDD;font-size: 12px;">{{parm.userName}}</td>
+          <td style="text-align: right; padding-right: 5px; font-size: 8px;color: #cccccc">2020-02-02 00:00:00</td>
+        </tr>
+        <tr>
+          <td colspan="2" ><div class="chartHistoryDetailLeft">{{parm.content}}</div></td>
+        </tr>
+      </table>
+
+      <table style="float: right;" *ngIf="parm.msg_from==='0'">
+        <tr>
+          <td style="text-align: left; padding-right: 5px; font-size: 8px;color: #cccccc">2020-02-02 00:00:00</td>
+          <td style="text-align: right;color: #1D9BDD;font-size: 12px;">5000002 陈妙</td>
+          <td rowspan="2" valign="top" style=" font-size: 16px;padding: 5px;"><div class="chartHistoryAvartar" style="font-size: 12px;line-height: 24px;">专</div></td>
+        </tr>
+        <tr>
+          <td colspan="2" ><div class="chartHistoryDetailRight">{{parm.content}}<img src="../../assets/timga.png" /></div></td>
+        </tr>
+      </table>
+    </li>
+  </ul>
+</div>
+<div style="height: 8%; padding: 20px 5px 20px 5px;">
+  <div class="refreshLeft"  style="float: left">自动刷新倒计时:<span id="countSeconds">{{totalminutes}}</span>秒</div>
+  <div style="float:right"><button class="refreshRightButton">手动刷新</button></div>
+</div>
